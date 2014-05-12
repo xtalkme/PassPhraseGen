@@ -1,29 +1,24 @@
 import random
 
-a = [line.strip() for line in open('wordlist.txt')]
-b = [line.strip() for line in open('chars.txt')]
-c = [0, 1]
+def GetMeWords():
+  wordlist = [line.strip() for line in open('/opt/bottle/project/static/misc/wordlist.txt')]
+  chars = [line.strip() for line in open('/opt/bottle/project/static/misc/chars.txt')]
+  words = []
+  fourwords = ['word1', 'word2', 'word3', 'word4']
+  for word in fourwords:
+    word = random.SystemRandom().choice(wordlist)
+    words.append(word)
 
-word1 = random.SystemRandom().choice(a)
-word2 = random.SystemRandom().choice(a)
-word3 = random.SystemRandom().choice(a)
-word4 = random.SystemRandom().choice(a)
-
-char = random.SystemRandom().choice(b)
-rand3 = random.randint(0,1)
-
-x = [word1, word2, word3, word4]
-c = c[rand3]
-
-rand = random.randint(0, 3)
-
-x[rand] = x[rand].capitalize()
-
-passphrase = ""
-for i in x:
-  passphrase = passphrase + " " + i
-
-if c == 0:
-	print passphrase.strip() + char.strip()
-else:
-	print char.strip() + passphrase.strip()
+  rand3 = random.randint(0,1)
+  oneorzero = [0, 1]
+  oneorzero = oneorzero[rand3]
+  char = random.SystemRandom().choice(chars)
+  rand = random.randint(0, 3)
+  words[rand] = words[rand].capitalize()
+  passphrase = ""
+  for phrase in words:
+    passphrase = passphrase + " " + phrase
+  if oneorzero == 0:
+    return passphrase.strip() + char.strip()
+  else:
+    return char.strip() + passphrase.strip()
